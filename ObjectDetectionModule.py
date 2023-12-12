@@ -27,9 +27,12 @@ def findObjects(img, objectCascade, scaleFactor = 1.1, minNeighbors = 4):
     '''
     imgObject = img.copy()
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)                                  # optional
+    
     # find objects in image
-    objects = objectCascade.detectMultiScale(imgGray, scaleFactor, minNeighbors)     # image, scale factor, min neighbors (changing these speed accuracy tradeoff)
-    objectsOut = []                                                                  # list to store bounding box and area, to later find the biggest
+    # image, scale factor, min neighbors (changing these speed-accuracy tradeoff)
+    objects = objectCascade.detectMultiScale(imgGray, scaleFactor, minNeighbors)
+    # list to store bounding box and area, to later find the biggest
+    objectsOut = []                                                                  
 
     # drawing bounding box over faces
     for (x,y,w,h) in objects:
@@ -44,9 +47,11 @@ def findObjects(img, objectCascade, scaleFactor = 1.1, minNeighbors = 4):
 def main():
     img = cv2.imread("test.jpg")
     img = cv2.resize(img, None, fx=0.5, fy=0.5)
+    
     # import the file which has information of detection, here face cascade but can by anything
     faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
     imgObject, objects = findObjects(img, faceCascade)
+    
     cv2.imshow("Output",imgObject)
     cv2.waitKey(0)
 

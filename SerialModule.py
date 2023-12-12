@@ -39,7 +39,8 @@ def sendData(se, data, digits):
         data (list of ints): data to send in list format
         digits (int): digits per value
     Example:
-        sendData(ser, [20,30], 3) sends the string "$020030"
+        >>>sendData(ser, [20,30], 3) 
+        sends the string "$020030"
     '''
     myString = '$'
     for d in data:

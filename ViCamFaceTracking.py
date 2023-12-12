@@ -17,11 +17,17 @@ import time
 frameWidth = 640
 frameHeight = 480
 
-# uncomment for CSI camera
-# flip = 2
-# camset = 
-
 cap = cv2.VideoCapture(1)                                    # uncomment for webcam     
+
+# uncomment for CSI camera
+# flip = 0
+# camset = "nvarguscamerasrc sensor_id=0 ! \
+#    video/x-raw(memory:NVMM), width=1920, height=1080, framerate=30/1 ! \
+#    nvvidconv flip-method={} ! \
+#    video/x-raw, width=960, height=540, format=(string)BGRx ! \
+#    videoconvert ! \
+#    video/x-raw, format=(string)BGR ! appsink".format(flip)
+# cap = cv2.VideoCapture(camset, cv2.CAP_GSTREAMER)
 
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
