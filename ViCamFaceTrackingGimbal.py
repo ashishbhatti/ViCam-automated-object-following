@@ -190,7 +190,7 @@ def main():
         if (yawValue != None):
             sm.sendData(ser, [yawValue, pitchValue], 3)
     
-    
+        # imgObject = cv2.resize(imgObject, (0,0), None, 3, 3)
         cv2.imshow("Image", imgObject)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             sm.sendData(ser, [00,00], 3)
