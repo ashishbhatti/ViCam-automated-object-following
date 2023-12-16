@@ -128,7 +128,7 @@ def trackObjectRotationRates(cx, cy, w, h):
         errorPR = cy - h//2
         speedP = pidP[0]*errorPR + pidP[1]*(errorPR - perrorPR)         # PD control output for yaw rate
         pitchRate = int(np.clip(speedP, -100, 100))                       # clipping pid control output between a range
-        perrorYR = errorYR
+        perrorPR = errorPR
 
         # sm.sendData(ser, [posX, posY], 3)
         return yawRate, pitchRate
